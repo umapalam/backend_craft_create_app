@@ -15,13 +15,11 @@ const projectSchema = new mongoose.Schema({
     }, 
     notes: {
         type: String, 
-        default: 0
     }, 
     complete: {
         type: Boolean, 
         default: false
     }
-   
 }); 
 
 const Projects = mongoose.model('Projects', projectSchema); 

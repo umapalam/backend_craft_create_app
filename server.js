@@ -25,6 +25,8 @@ app.get('/', function (req, res){
 })
 
 app.use('/projects', routes.projects)
+app.use('/tools', routes.tools)
+app.use('/users', routes.users)
 
 // Server Bind
 app.listen(PORT, () => {
