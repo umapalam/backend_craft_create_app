@@ -1,17 +1,30 @@
+// External Modules 
 const express = require('express'); 
 
+// Internal Modules 
+const routes = require('./routes'); 
+
+//Require dotenv npm package
+require('dotenv').config(); 
+
+// PORT
 const PORT = process.env.PORT || 4000; 
 
+// Express Instance
 const app = express(); 
 
 // DB Connection 
+require('./config/db.connection'); 
 
 // Middlewares
+app.use(express.json()); 
 
 // Routes 
 app.get('/', function (req, res){
-    res.send('Hello World')
+    res.send('Landing Page')
 })
+
+app.use('/projects', routes.projects)
 
 // Server Bind
 app.listen(PORT, () => {

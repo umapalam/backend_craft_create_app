@@ -2,7 +2,7 @@
 const mongoose = require('mongoose'); 
 
 // Connection String to MongoDB Database
-const connectionStr = process.env.MONGODB_URI || 'mongodb://localhost:27017/CraftDB'; 
+const connectionStr = process.env.MONGODB_URI || 'mongodb://localhost:27017/ProjectDB'; 
 
 // Set Connection 
 
