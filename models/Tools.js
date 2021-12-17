@@ -17,6 +17,10 @@ const toolSchema = new mongoose.Schema({
         type: Number, 
         default: 0
     }, 
+    img: {
+        data: Buffer, 
+        contentType: String
+    }, 
 }); 
 
 const Tools = mongoose.model('Tools', toolSchema); 

@@ -5,7 +5,7 @@ const db = require('../models');
 const index = (req, res) => {
     // res.send('route is working')
     db.projects.find({}, (error, projects) => {
-        if(error) return res.status(400).json({ error: error.message}); 
+        if(error) return res.status(400).json({error: error.message}); 
  
         return res.status(200).json(projects)
     }); 
@@ -13,7 +13,11 @@ const index = (req, res) => {
 
 // Create
 const create = (req, res) => {
+    db.projects.create(req.body, (error, createdProject) => {
+        if(error) return res.status(400).json({error: error.message}); 
 
+        return res.status(201).json(createdProject); 
+    }); 
 }
 
 // Update

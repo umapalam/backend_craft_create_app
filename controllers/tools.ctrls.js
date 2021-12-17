@@ -13,7 +13,11 @@ const index = (req, res) => {
 
 // Create
 const create = (req, res) => {
+    db.tools.create(req.body, (error, createdTool) => {
+        if(error) return res.status(400).json({error: error.message}); 
 
+        return res.status(201).json(createdTool); 
+    }); 
 }
 
 // Update
