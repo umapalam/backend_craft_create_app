@@ -22,7 +22,15 @@ const create = (req, res) => {
 
 // Update
 const update = (req, res) => {
-    
+    db.tools.findByIdAndUpdate(
+        req.params.id, 
+        req.body, 
+        {new: true}, 
+        (error, updatedTool) => {
+            if(error) return res.status(400).json({error: error.message}); 
+
+            return res.status(200).json(updatedTool); 
+        }); 
 }
 
 // Destroy
