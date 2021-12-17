@@ -35,7 +35,13 @@ const update = (req, res) => {
 
 // Destroy
 const destroy = (req, res) => {
-    
+    db.tools.findByIdAndDelete(req.params.id, (error, deletedTool) => {
+        if(error) return res.status(400).json({error: error.message}); 
+
+        return res.status(200).json({
+            message: `${deletedTool.name} deleted successfully`
+        })
+    }); 
 }
 
 module.exports = {

@@ -35,7 +35,13 @@ const update = (req, res) => {
 
 // Destroy
 const destroy = (req, res) => {
-    
+    db.projects.findByIdAndDelete(req.params.id, (error, deletedProject) => {
+        if(error) return res.status(400).json({error: error.message}); 
+
+        return res.status(200).json({
+            message: `Project ${deletedProject.title} deleted successfully`
+        })
+    }); 
 }
 
 module.exports = {
