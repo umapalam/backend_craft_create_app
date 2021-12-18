@@ -1,6 +1,8 @@
 const express = require('express'); 
 const router = express.Router(); 
 
+// http://localhost:4000/tools
+
 // CTRLS 
 const ctrls = require('../controllers')
 
