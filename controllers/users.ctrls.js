@@ -7,11 +7,11 @@ const signup = (req, res) => {
     // res.send('I hit this route')
     req.body.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10))
   
-    db.Users.create(req.body, (error, createdUser) => {
+    db.users.create(req.body, (error, createdUser) => {
       if(error) {
         res.status(400).json({ error: error.message })
       } else {
-        console.log("user has signed up")
+        console.log("User has signed up")
         res.status(201).json(createdUser)
       }
     })
@@ -21,7 +21,7 @@ const signup = (req, res) => {
 // User Login route
 
 const login = (req, res) => {
-    db.Users.findOne({ username: req.body.username }, (err, foundUser) => {
+    db.users.findOne({ username: req.body.username }, (err, foundUser) => {
         if(err) {
           res.send(err)
         } else {
@@ -29,7 +29,7 @@ const login = (req, res) => {
             if (bcrypt.compareSync(req.body.password, foundUser.password)){
               // login user and create session
               req.session.currentUser = foundUser
-              console.log('User has logged in')
+              console.log('User has logged IN')
               res.status(200).json(foundUser)
             } else {
               res.status(404).json({error: 'Incorrect Password'})
@@ -46,6 +46,7 @@ const login = (req, res) => {
 const logout = (req, res) => {
     req.session.destroy(() => {
         res.status(200).json({ msg: 'User logged out' })
+        console.log('User has logged OUT')
     })
 }
 
